@@ -1,0 +1,32 @@
+
+## Install basic Laravel 8
+Run:
+    docker-compose run --rm composer create-project laravel/laravel .
+    docker-compose run --rm artisan migrate
+
+Update the .env to match settings in docker-compose.yml:
+    DB_HOST=mysql
+    DB_DATABASE=homestead
+    DB_USERNAME=homestead
+    DB_PASSWORD=secret
+
+## Install Jetstream
+Run:
+    docker-compose run --rm composer require laravel/jetstream
+    docker-compose run --rm artisan jetstream:install livewire --teams
+    docker-compose run --rm npm install && docker-compose run --rm npm run dev
+
+# Load additional required packages.  (Note: Livewire and Sanctum do not appear to get loaded as part of the `artisan jetstream:install livewire` command)
+Run:
+    docker-compose run --rm composer require livewire/livewire laravel/sanctum
+
+## Configure Laravel + Jetstream
+    docker-compose run --rm composer dumpautoload
+    docker-compose run --rm artisan storage:link
+    docker-compose run --rm artisan view:cache
+    docker-compose run --rm artisan config:cache
+    docker-compose run --rm artisan cache:clear
+    docker-compose run --rm artisan route:clear
+
+    docker-compose run --rm artisan migrate
+    docker-compose run --rm artisan migrate:fresh
