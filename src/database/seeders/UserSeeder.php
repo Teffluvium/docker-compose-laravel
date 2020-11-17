@@ -18,17 +18,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('users')->insert([
-        //     'name'              => 'Tim',
-        //     'email'             => 'tim@test.com',
-        //     'password'          => Hash::make('11111111'),
-        //     'email_verified_at' => now(),
-        //     'remember_token' => Str::random(10),
-        // ]);
+        DB::table('users')->insert([
+            'name'              => 'Tim',
+            'email'             => 'tim@test.com',
+            'password'          => Hash::make('11111111'),
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
+        ]);
 
         // Seed with some additional random users
         $userCount = 3;
-        $users = \App\Models\User::factory()->count($userCount)->create();
+        $users = User::factory()->count($userCount)->create();
 
     }
 }
