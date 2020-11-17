@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         ]);
 
         // Seed with some additional random users
-        $userCount = 3;
+        $userCount = 10;
         $users = User::factory()->count($userCount)->create();
 
         // Create a personal team for each user
@@ -35,12 +35,15 @@ class UserSeeder extends Seeder
         foreach ($users as $user) {
             // Grab user info
             $teamInfo = [
-                'user_id' => $user,
+                'user_id' => $user->id,
                 'name' => explode(' ', $user->name, 2)[0]."'s Team",
                 'personal_team' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
             ];
+
             // Create the personal team
-            $team = Team::factory()->create( $teamInfo );
+            DB::table('teams')->insert( $teamInfo );
         }
     }
 }
