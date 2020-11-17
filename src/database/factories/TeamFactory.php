@@ -22,10 +22,12 @@ class TeamFactory extends Factory
      */
     public function definition()
     {
-        return [
+        $team = [
             'user_id' => User::factory()->create(),
             'name' => $this->faker->company,
             'personal_team' => true,
         ];
+
+        return $team;
     }
 }
