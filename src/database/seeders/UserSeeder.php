@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -26,6 +28,7 @@ class UserSeeder extends Seeder
 
         // Seed with some additional random users
         $userCount = 3;
-        \App\Models\User::factory()->count($userCount)->create();
+        $users = \App\Models\User::factory()->count($userCount)->create();
+
     }
 }
