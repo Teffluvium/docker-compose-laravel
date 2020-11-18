@@ -94,6 +94,20 @@
                 @error('slug') <span class="error">{{ $message }}</span> @enderror
             </div>
 
+            {{-- Checkboxes --}}
+            <div class="mt-4">
+                <label>
+                    <input class="form-checkbox" type="checkbox" value="{{ $isSetToDefaultHomePage }}" wire:model="isSetToDefaultHomePage"/>
+                    <span class="ml-2 text-sm text-gray-600">Set as the default home page</span>
+                </label>
+            </div>
+            <div class="mt-4">
+                <label>
+                    <input class="form-checkbox" type="checkbox" value="{{ $isSetToDefaultNotFoundPage }}" wire:model="isSetToDefaultNotFoundPage"/>
+                    <span class="ml-2 text-sm text-red-600">Set as the default 404 error page</span>
+                </label>
+            </div>
+
             {{-- Content Field --}}
             <div class="mt-4">
                 <x-jet-label for="title" value="{{ __('Content') }}" />
